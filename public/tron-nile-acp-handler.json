@@ -1,0 +1,19 @@
+{
+  "id": "dev.tron.acp.trc20_usdt",
+  "version": "2026-04-21",
+  "title": "TRON Nile TRC20 USDT ACP Payment Handler",
+  "description": "Demo ACP payment handler that instructs an agent to send an exact TRC20 USDT transfer on TRON Nile and submit the transaction hash as the checkout completion credential.",
+  "network": "tron:nile",
+  "asset": "TRC20_USDT",
+  "credential_type": "tron_tx_hash",
+  "settlement": {
+    "confirmation_source": "TRON Nile full node",
+    "verification": [
+      "transaction exists and has SUCCESS result",
+      "transaction is a TriggerSmartContract call",
+      "contract_address matches configured TRC20 USDT contract",
+      "recipient matches merchant address",
+      "amount matches checkout session total"
+    ]
+  }
+}

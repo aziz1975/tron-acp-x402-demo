@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Premium data product</title>
+  <desc id="desc">A dashboard-style product image for premium agent data access.</desc>
+  <rect width="640" height="360" fill="#101418"/>
+  <rect x="54" y="52" width="532" height="256" rx="8" fill="#182026" stroke="#31414a"/>
+  <rect x="86" y="88" width="196" height="18" rx="3" fill="#39d98a"/>
+  <rect x="86" y="128" width="468" height="12" rx="3" fill="#6b7b84"/>
+  <rect x="86" y="154" width="338" height="12" rx="3" fill="#6b7b84"/>
+  <rect x="86" y="208" width="112" height="64" rx="6" fill="#22313a" stroke="#39d98a"/>
+  <rect x="226" y="208" width="112" height="64" rx="6" fill="#22313a" stroke="#58a6ff"/>
+  <rect x="366" y="208" width="112" height="64" rx="6" fill="#22313a" stroke="#f2b84b"/>
+  <circle cx="528" cy="238" r="22" fill="#39d98a"/>
+</svg>

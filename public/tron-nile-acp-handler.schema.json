@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://localhost/schemas/tron-nile-acp-handler.schema.json",
+  "title": "TRON Nile TRC20 USDT ACP Handler Config",
+  "type": "object",
+  "required": [
+    "network",
+    "chain",
+    "asset",
+    "contract_address",
+    "receiver_address",
+    "amount",
+    "amount_decimal",
+    "transfer_state"
+  ],
+  "properties": {
+    "network": { "const": "tron:nile" },
+    "chain": { "const": "TRON_NILE" },
+    "asset": { "const": "TRC20_USDT" },
+    "contract_address": { "type": "string", "pattern": "^T[1-9A-HJ-NP-Za-km-z]{33}$" },
+    "receiver_address": { "type": "string", "pattern": "^T[1-9A-HJ-NP-Za-km-z]{33}$" },
+    "amount": { "type": "string", "pattern": "^[0-9]+$" },
+    "amount_decimal": { "type": "string", "pattern": "^[0-9]+\\.[0-9]{6}$" },
+    "transfer_state": {
+      "type": "string",
+      "enum": [
+        "available",
+        "awaiting_human_approval",
+        "ready_for_transfer",
+        "verifying_blockchain_receipt",
+        "completed",
+        "receipt_rejected",
+        "rejected",
+        "canceled"
+      ]
+    }
+  },
+  "additionalProperties": true
+}

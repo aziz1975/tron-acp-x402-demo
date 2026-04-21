@@ -1,0 +1,4 @@
+bankofai-x402
+fastapi
+python-dotenv
+uvicorn

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://localhost/schemas/tron-nile-acp-instrument.schema.json",
+  "title": "TRON Nile TRC20 USDT ACP Instrument",
+  "type": "object",
+  "required": ["type", "credential"],
+  "properties": {
+    "type": { "const": "blockchain_receipt" },
+    "credential": {
+      "type": "object",
+      "required": ["type", "token"],
+      "properties": {
+        "type": { "const": "tron_tx_hash" },
+        "token": {
+          "type": "string",
+          "minLength": 32,
+          "description": "TRON transaction hash for the exact TRC20 USDT transfer."
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

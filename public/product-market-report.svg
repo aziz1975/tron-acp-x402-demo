@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="360" viewBox="0 0 640 360" role="img" aria-labelledby="title desc">
+  <title id="title">Market report product</title>
+  <desc id="desc">A report-style product image for TRON agent market intelligence.</desc>
+  <rect width="640" height="360" fill="#111713"/>
+  <rect x="82" y="44" width="476" height="272" rx="8" fill="#f6f1e8"/>
+  <rect x="124" y="84" width="240" height="20" rx="3" fill="#17211b"/>
+  <rect x="124" y="124" width="392" height="10" rx="3" fill="#8a9288"/>
+  <rect x="124" y="148" width="336" height="10" rx="3" fill="#8a9288"/>
+  <polyline points="130,260 208,214 278,232 356,170 438,188 508,132" fill="none" stroke="#1f9d63" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="508" cy="132" r="12" fill="#f2b84b"/>
+</svg>
