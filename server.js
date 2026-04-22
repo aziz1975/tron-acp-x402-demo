@@ -30,6 +30,7 @@ const TOKEN_MULTIPLIER = 1_000_000;
 const MERCHANT_ADDRESS = process.env.MERCHANT_ADDRESS || 'TQGfKPHs3AwiBT44ibkCU64u1G4ttojUXU';
 const TRC20_USDT_CONTRACT = process.env.TRC20_USDT_CONTRACT || 'TXYZopYRdj2D9XRtbG411XZZ3kM5VkAeBf';
 const TRON_FULL_NODE = process.env.TRON_FULL_NODE || 'https://nile.trongrid.io';
+const TRON_PRIVATE_KEY = process.env.TRON_PRIVATE_KEY;
 const X402_FACILITATOR_URL = process.env.FACILITATOR_URL || 'https://facilitator.bankofai.io';
 const X402_SERVICE_URL = process.env.X402_SERVICE_URL || 'http://localhost:8001';
 const X402_SERVICE_RESOURCE_PATH = process.env.X402_SERVICE_RESOURCE_PATH || '/premium-data';
@@ -58,6 +59,19 @@ const tronWeb = new TronWeb({
   solidityNode: TRON_FULL_NODE,
   eventServer: TRON_FULL_NODE
 });
+
+const buildAgentTronWeb = () => {
+  if (!TRON_PRIVATE_KEY) {
+    throw new Error('TRON_PRIVATE_KEY is required to broadcast the demo ACP payment.');
+  }
+
+  return new TronWeb({
+    fullNode: TRON_FULL_NODE,
+    solidityNode: TRON_FULL_NODE,
+    eventServer: TRON_FULL_NODE,
+    privateKey: TRON_PRIVATE_KEY
+  });
+};
 
 const getBaseUrl = (req) => `${req.protocol}://${req.get('host')}`;
 const getAcpBaseUrl = (req) => `${getBaseUrl(req)}${ACP_BASE_PATH}`;
@@ -304,6 +318,82 @@ const verifyTronTransfer = async (transactionHash, session) => {
   return transaction;
 };
 
+const buildAcpReceiptPaymentData = (transactionHash) => ({
+  handler_id: TRON_HANDLER_ID,
+  instrument: {
+    type: 'blockchain_receipt',
+    credential: {
+      type: 'tron_tx_hash',
+      token: transactionHash
+    }
+  }
+});
+
+const completeCheckoutWithTransaction = async (req, session, transactionHash, paymentData) => {
+  db.update(session.id, {
+    status: 'complete_in_progress',
+    transfer_state: 'verifying_blockchain_receipt',
+    payment_data: paymentData || null,
+    txHash: transactionHash,
+    updatedAt: nowIso()
+  });
+
+  try {
+    await verifyTronTransfer(transactionHash, session);
+    const completedAt = nowIso();
+    return db.update(session.id, {
+      status: 'completed',
+      transfer_state: 'completed',
+      txHash: transactionHash,
+      updatedAt: completedAt,
+      order: {
+        type: 'order',
+        id: session.merchant_order_id,
+        checkout_session_id: session.id,
+        order_number: session.merchant_order_id.replace('ord_', '').slice(0, 18),
+        permalink_url: `${getBaseUrl(req)}/acp-explorer?session=${session.id}`,
+        status: 'confirmed',
+        line_items: session.line_items,
+        totals: session.totals,
+        confirmation: {
+          confirmation_number: session.merchant_order_id,
+          confirmed_at: completedAt
+        }
+      }
+    });
+  } catch (error) {
+    const failed = db.update(session.id, {
+      status: 'ready_for_payment',
+      transfer_state: 'receipt_rejected',
+      last_error: error.message,
+      updatedAt: nowIso()
+    });
+    error.checkoutSession = failed;
+    throw error;
+  }
+};
+
+const normalizeBroadcastResult = (result) => {
+  if (typeof result === 'string') return result;
+  if (result && typeof result === 'object') {
+    return result.txid || result.txID || result.transaction_id || null;
+  }
+  return null;
+};
+
+const broadcastAcpTransfer = async (session) => {
+  const agentTronWeb = buildAgentTronWeb();
+  const contract = await agentTronWeb.contract().at(TRC20_USDT_CONTRACT);
+  const result = await contract.transfer(MERCHANT_ADDRESS, session.amount_in_base_units).send({
+    feeLimit: 100_000_000
+  });
+  const transactionHash = normalizeBroadcastResult(result);
+  if (!transactionHash) {
+    throw new Error('TRON transfer was broadcast, but no transaction hash was returned.');
+  }
+  return transactionHash;
+};
+
 const sendApprovalPrompt = (session, sourceBaseUrl) => {
   const amount = formatBaseUnits(session.amount_in_base_units);
   const message = [
@@ -514,50 +604,15 @@ app.post(`${ACP_BASE_PATH}/checkout_sessions/:id/complete`, async (req, res) => 
   const transactionHash = extractTransactionHash(req.body);
   if (!transactionHash) return acpError(res, 400, 'missing_transaction_hash', 'Submit payment_data.instrument.credential.token with type tron_tx_hash.');
 
-  db.update(session.id, {
-    status: 'complete_in_progress',
-    transfer_state: 'verifying_blockchain_receipt',
-    payment_data: req.body.payment_data || null,
-    txHash: transactionHash,
-    updatedAt: nowIso()
-  });
-
   try {
-    await verifyTronTransfer(transactionHash, session);
-    const completedAt = nowIso();
-    const completed = db.update(session.id, {
-      status: 'completed',
-      transfer_state: 'completed',
-      txHash: transactionHash,
-      updatedAt: completedAt,
-      order: {
-        type: 'order',
-        id: session.merchant_order_id,
-        checkout_session_id: session.id,
-        order_number: session.merchant_order_id.replace('ord_', '').slice(0, 18),
-        permalink_url: `${getBaseUrl(req)}/acp-explorer?session=${session.id}`,
-        status: 'confirmed',
-        line_items: session.line_items,
-        totals: session.totals,
-        confirmation: {
-          confirmation_number: session.merchant_order_id,
-          confirmed_at: completedAt
-        }
-      }
-    });
+    const completed = await completeCheckoutWithTransaction(req, session, transactionHash, req.body.payment_data);
     return res.json(buildCheckoutSession(req, completed));
   } catch (error) {
-    const failed = db.update(session.id, {
-      status: 'ready_for_payment',
-      transfer_state: 'receipt_rejected',
-      last_error: error.message,
-      updatedAt: nowIso()
-    });
     return res.status(400).json({
       type: 'invalid_request',
       code: 'payment_verification_failed',
       message: error.message,
-      checkout_session: buildCheckoutSession(req, failed)
+      checkout_session: buildCheckoutSession(req, error.checkoutSession || db.findById(session.id))
     });
   }
 });
@@ -610,6 +665,51 @@ app.post('/api/demo/reject/:id', (req, res) => {
   });
   if (!updated) return acpError(res, 404, 'not_found', 'Checkout session not found.');
   res.json({ success: true, checkout_session: updated });
+});
+
+app.post('/api/demo/pay-acp/:id', async (req, res) => {
+  const session = db.findById(req.params.id);
+  if (!session || session.type !== 'acp_checkout_session') {
+    return acpError(res, 404, 'not_found', 'Checkout session not found.');
+  }
+  if (session.status === 'completed') {
+    return res.json({ success: true, txHash: session.txHash, checkout_session: buildCheckoutSession(req, session) });
+  }
+  if (session.status !== 'ready_for_payment') {
+    return acpError(res, 409, 'not_ready_for_payment', 'Approve the checkout session before sending payment.');
+  }
+
+  db.update(session.id, {
+    status: 'complete_in_progress',
+    transfer_state: 'broadcasting_transfer',
+    updatedAt: nowIso()
+  });
+
+  let transactionHash = null;
+  try {
+    transactionHash = await broadcastAcpTransfer(session);
+    const paymentData = buildAcpReceiptPaymentData(transactionHash);
+    const completed = await completeCheckoutWithTransaction(req, session, transactionHash, paymentData);
+    res.json({
+      success: true,
+      txHash: transactionHash,
+      checkout_session: buildCheckoutSession(req, completed)
+    });
+  } catch (error) {
+    const transferState = transactionHash ? 'payment_verification_failed' : 'payment_broadcast_failed';
+    const failed = db.update(session.id, {
+      status: 'ready_for_payment',
+      transfer_state: transferState,
+      last_error: error.message,
+      updatedAt: nowIso()
+    });
+    res.status(400).json({
+      success: false,
+      code: 'acp_payment_failed',
+      message: error.message,
+      checkout_session: buildCheckoutSession(req, failed)
+    });
+  }
 });
 
 app.post('/api/demo/run-x402-agent', (req, res) => {

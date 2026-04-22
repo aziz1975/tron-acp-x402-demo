@@ -151,6 +151,20 @@ p {
   font-weight: 700;
 }
 
+.button.pay {
+  background: #226dff;
+  border-color: #226dff;
+  color: #ffffff;
+  font-weight: 750;
+  min-width: 94px;
+}
+
+.button:disabled,
+.icon-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
 .button.secondary:hover,
 .icon-button:hover {
   background: #202b31;
@@ -397,9 +411,17 @@ p {
   animation: pulse 1s infinite;
 }
 
+.spin {
+  animation: spin 0.9s linear infinite;
+}
+
 @keyframes pulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.35; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
 
 @media (max-width: 900px) {

@@ -5,8 +5,10 @@ import {
   Clock,
   CreditCard,
   ExternalLink,
+  LoaderCircle,
   Play,
   RefreshCw,
+  Send,
   Terminal,
   Wallet,
   X
@@ -41,9 +43,10 @@ function Stat({ icon, label, value }) {
   );
 }
 
-function SessionRow({ session, onApprove, onReject }) {
+function SessionRow({ session, onApprove, onReject, onPay, payingId }) {
   const age = session.createdAt ? formatDistanceToNow(new Date(session.createdAt), { addSuffix: true }) : 'unknown';
   const handler = session.payment_protocol === 'acp_tron_trc20_usdt';
+  const isPaying = payingId === session.id;
 
   return (
     <article className="row-card">
@@ -63,6 +66,14 @@ function SessionRow({ session, onApprove, onReject }) {
         <div className="row-actions">
           <button className="icon-button success" title="Approve checkout" onClick={() => onApprove(session.id)}><Check size={18} /></button>
           <button className="icon-button danger" title="Reject checkout" onClick={() => onReject(session.id)}><X size={18} /></button>
+        </div>
+      ) : null}
+      {handler && session.status === 'ready_for_payment' ? (
+        <div className="row-actions">
+          <button className="button pay" title="Send TRON Nile USDT payment" onClick={() => onPay(session.id)} disabled={isPaying}>
+            {isPaying ? <LoaderCircle className="spin" size={18} /> : <Send size={18} />}
+            {isPaying ? 'Paying' : 'Pay'}
+          </button>
         </div>
       ) : null}
     </article>
@@ -116,6 +127,7 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const [modalOpen, setModalOpen] = useState(false);
+  const [payingId, setPayingId] = useState('');
 
   const loadOrders = async () => {
     setLoading(true);
@@ -153,6 +165,22 @@ export default function App() {
   const reject = async (id) => {
     await fetch(`${API_BASE}/api/demo/reject/${id}`, { method: 'POST' });
     loadOrders();
+  };
+
+  const payAcp = async (id) => {
+    setPayingId(id);
+    setError('');
+    try {
+      const response = await fetch(`${API_BASE}/api/demo/pay-acp/${id}`, { method: 'POST' });
+      const body = await response.json();
+      if (!response.ok) throw new Error(body.message || `HTTP ${response.status}`);
+      await loadOrders();
+    } catch (err) {
+      setError(err.message);
+      await loadOrders();
+    } finally {
+      setPayingId('');
+    }
   };
 
   const createCheckout = async () => {
@@ -239,7 +267,14 @@ export default function App() {
               </div>
             ) : null}
             {records.map((record) => (
-              <SessionRow key={record.id} session={record} onApprove={approve} onReject={reject} />
+              <SessionRow
+                key={record.id}
+                session={record}
+                onApprove={approve}
+                onReject={reject}
+                onPay={payAcp}
+                payingId={payingId}
+              />
             ))}
           </div>
         </section>
