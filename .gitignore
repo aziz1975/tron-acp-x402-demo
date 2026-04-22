@@ -3,6 +3,8 @@ frontend/node_modules/
 .env
 .venv/
 .venv-x402/
+__pycache__/
+*.py[cod]
 *.log
 dist/
 frontend/dist/

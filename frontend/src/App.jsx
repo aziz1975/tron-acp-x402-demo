@@ -45,7 +45,8 @@ function Stat({ icon, label, value }) {
 
 function SessionRow({ session, onApprove, onReject, onPay, payingId }) {
   const age = session.createdAt ? formatDistanceToNow(new Date(session.createdAt), { addSuffix: true }) : 'unknown';
-  const handler = session.payment_protocol === 'acp_tron_trc20_usdt';
+  const isAcpSession = session.type === 'acp_checkout_session' || String(session.payment_protocol || '').startsWith('acp_');
+  const isX402BackedAcp = session.payment_protocol === 'acp_x402_tron_usdt';
   const isPaying = payingId === session.id;
 
   return (
@@ -56,9 +57,10 @@ function SessionRow({ session, onApprove, onReject, onPay, payingId }) {
           <StatusBadge status={session.status} />
         </div>
         <div className="row-meta">
-          <span>{handler ? 'ACP TRON checkout' : 'x402 payment'}</span>
+          <span>{isAcpSession ? (isX402BackedAcp ? 'ACP x402 checkout' : 'ACP TRON checkout') : 'x402 payment'}</span>
           <span>{age}</span>
           {session.txHash ? <span className="hash">{session.txHash.slice(0, 10)}...{session.txHash.slice(-8)}</span> : null}
+          {session.last_error ? <span className="error">{session.last_error}</span> : null}
         </div>
       </div>
       <div className="row-amount">{money(session.amount_in_base_units)}</div>
@@ -68,9 +70,9 @@ function SessionRow({ session, onApprove, onReject, onPay, payingId }) {
           <button className="icon-button danger" title="Reject checkout" onClick={() => onReject(session.id)}><X size={18} /></button>
         </div>
       ) : null}
-      {handler && session.status === 'ready_for_payment' ? (
+      {isAcpSession && session.status === 'ready_for_payment' ? (
         <div className="row-actions">
-          <button className="button pay" title="Send TRON Nile USDT payment" onClick={() => onPay(session.id)} disabled={isPaying}>
+          <button className="button pay" title="Pay ACP checkout with x402" onClick={() => onPay(session.id)} disabled={isPaying}>
             {isPaying ? <LoaderCircle className="spin" size={18} /> : <Send size={18} />}
             {isPaying ? 'Paying' : 'Pay'}
           </button>
@@ -150,7 +152,7 @@ export default function App() {
   }, []);
 
   const metrics = useMemo(() => {
-    const acp = records.filter((record) => record.payment_protocol === 'acp_tron_trc20_usdt');
+    const acp = records.filter((record) => record.type === 'acp_checkout_session' || String(record.payment_protocol || '').startsWith('acp_'));
     const x402 = records.filter((record) => record.payment_protocol === 'bankofai_x402');
     const paid = records.filter((record) => ['completed', 'PAID'].includes(record.status));
     const volume = paid.reduce((sum, record) => sum + Number(record.amount_in_base_units || 0), 0);
@@ -171,7 +173,7 @@ export default function App() {
     setPayingId(id);
     setError('');
     try {
-      const response = await fetch(`${API_BASE}/api/demo/pay-acp/${id}`, { method: 'POST' });
+      const response = await fetch(`${API_BASE}/api/demo/pay-acp-x402/${id}`, { method: 'POST' });
       const body = await response.json();
       if (!response.ok) throw new Error(body.message || `HTTP ${response.status}`);
       await loadOrders();
@@ -242,11 +244,11 @@ export default function App() {
 
         <section className="protocol-band">
           <div>
-            <h2>TRON ACP Payment Handler</h2>
-            <p>Agents receive an ACP payment handler that encodes the TRON Nile network, TRC20 USDT contract, merchant receiver, exact amount, and receipt credential schema.</p>
+            <h2>ACP x402 Payment Handler</h2>
+            <p>Agents receive an ACP payment handler that points to an x402-protected resource, then x402 settlement completes the checkout session.</p>
           </div>
           <a className="button secondary" href={`${API_BASE}/public/tron-nile-acp-handler.json`} target="_blank" rel="noreferrer">
-            <ExternalLink size={18} /> Handler JSON
+            <ExternalLink size={18} /> TRON Fallback Handler
           </a>
         </section>
 

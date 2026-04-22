@@ -1,19 +1,26 @@
 import hashlib
+import logging
 import os
 
 from dotenv import load_dotenv
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from tronpy import AsyncTron
+from tronpy.providers.async_http import AsyncHTTPProvider
 
 from bankofai.x402.facilitator import FacilitatorClient
 from bankofai.x402.fastapi import X402Middleware
+from bankofai.x402.mechanisms.tron.exact_gasfree.server import ExactGasFreeServerMechanism
 from bankofai.x402.server import X402Server
+from bankofai.x402.utils import tron_client
 
 load_dotenv()
 
 NETWORK = os.environ.get("X402_NETWORK", "tron:nile")
 PAY_TO_ADDRESS = os.environ["MERCHANT_ADDRESS"]
 FACILITATOR_URL = os.environ.get("FACILITATOR_URL", "https://facilitator.bankofai.io")
+TRON_FULL_NODE = os.environ.get("TRON_FULL_NODE")
+TRON_GRID_API_KEY = os.environ.get("TRON_GRID_API_KEY")
 PRICE_DECIMAL = os.environ.get("X402_PRICE_DECIMAL", "15.00")
 PRICE_CURRENCY = os.environ.get("X402_PRICE_CURRENCY", "USDT")
 SCHEMES = [
@@ -21,6 +28,34 @@ SCHEMES = [
     for scheme in os.environ.get("X402_SERVICE_SCHEMES", "exact_permit").split(",")
     if scheme.strip()
 ]
+
+logger = logging.getLogger("x402_service")
+
+
+def create_configured_async_tron_client(network: str):
+    """Force x402 transaction verification to use the repo-configured TRON RPC."""
+    normalized_network = network.removeprefix("tron:")
+    if not TRON_FULL_NODE:
+        return tron_client._original_create_async_tron_client(network)
+
+    provider_kwargs = {"endpoint_uri": TRON_FULL_NODE}
+    if TRON_GRID_API_KEY:
+        provider_kwargs["api_key"] = TRON_GRID_API_KEY
+
+    logger.info(
+        "Creating AsyncTron verifier client for network=%s using %s",
+        normalized_network,
+        TRON_FULL_NODE,
+    )
+    return AsyncTron(
+        provider=AsyncHTTPProvider(**provider_kwargs),
+        network=normalized_network,
+    )
+
+
+if not hasattr(tron_client, "_original_create_async_tron_client"):
+    tron_client._original_create_async_tron_client = tron_client.create_async_tron_client
+tron_client.create_async_tron_client = create_configured_async_tron_client
 
 app = FastAPI(title="TRON ACP x402 Middleware Service")
 app.add_middleware(
@@ -30,7 +65,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-x402_server = X402Server().set_facilitator(FacilitatorClient(FACILITATOR_URL))
+x402_server = (
+    X402Server()
+    .register(NETWORK, ExactGasFreeServerMechanism())
+    .set_facilitator(FacilitatorClient(FACILITATOR_URL))
+)
 x402 = X402Middleware(x402_server)
 
 
@@ -42,6 +81,8 @@ async def health():
         "facilitator": FACILITATOR_URL,
         "price": f"{PRICE_DECIMAL} {PRICE_CURRENCY}",
         "payTo": PAY_TO_ADDRESS,
+        "tronFullNode": TRON_FULL_NODE,
+        "schemes": SCHEMES,
     }
 
 

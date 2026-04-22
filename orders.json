@@ -583,5 +583,1208 @@
         "confirmed_at": "2026-04-22T14:49:19.427Z"
       }
     }
+  },
+  {
+    "id": "cs_tron_1776879116301_72667",
+    "type": "acp_checkout_session",
+    "merchant_order_id": "ord_cs_tron_1776879116301_72667",
+    "status": "completed",
+    "transfer_state": "completed",
+    "buyer": null,
+    "fulfillment_details": null,
+    "line_items": [
+      {
+        "id": "li_1",
+        "item": {
+          "id": "premium_data_access"
+        },
+        "quantity": 1,
+        "name": "Premium Agent Data Access",
+        "description": "One-time access to a premium commerce intelligence payload for AI agents.",
+        "images": [
+          "http://localhost:8000/public/product-premium-data.svg"
+        ],
+        "unit_amount": 15000000,
+        "custom_attributes": [
+          {
+            "display_name": "Network",
+            "value": "TRON Nile"
+          },
+          {
+            "display_name": "Asset",
+            "value": "TRC20 USDT"
+          }
+        ],
+        "totals": [
+          {
+            "type": "items_base_amount",
+            "display_text": "Base amount",
+            "amount": 15000000
+          },
+          {
+            "type": "subtotal",
+            "display_text": "Subtotal",
+            "amount": 15000000
+          },
+          {
+            "type": "total",
+            "display_text": "Total",
+            "amount": 15000000
+          }
+        ]
+      }
+    ],
+    "totals": [
+      {
+        "type": "items_base_amount",
+        "display_text": "Item total",
+        "amount": 15000000
+      },
+      {
+        "type": "subtotal",
+        "display_text": "Subtotal",
+        "amount": 15000000
+      },
+      {
+        "type": "tax",
+        "display_text": "Tax",
+        "amount": 0
+      },
+      {
+        "type": "total",
+        "display_text": "Total",
+        "amount": 15000000
+      }
+    ],
+    "currency": "USDT",
+    "presentment_currency": "USDT",
+    "total_amount": "15.000000",
+    "amount_in_base_units": 15000000,
+    "payment_protocol": "acp_x402_tron_usdt",
+    "txHash": null,
+    "createdAt": "2026-04-22T17:31:56.301Z",
+    "updatedAt": "2026-04-22T19:09:07.095Z",
+    "humanApprovedAt": "2026-04-22T17:33:57.094Z",
+    "last_error": "Internal Server Error",
+    "payment_data": null
+  },
+  {
+    "id": "cs_tron_1776879504414_6326",
+    "type": "acp_checkout_session",
+    "merchant_order_id": "ord_cs_tron_1776879504414_6326",
+    "status": "failed",
+    "transfer_state": "x402_payment_failed",
+    "buyer": null,
+    "fulfillment_details": null,
+    "line_items": [
+      {
+        "id": "li_1",
+        "item": {
+          "id": "premium_data_access"
+        },
+        "quantity": 1,
+        "name": "Premium Agent Data Access",
+        "description": "One-time access to a premium commerce intelligence payload for AI agents.",
+        "images": [
+          "http://localhost:8000/public/product-premium-data.svg"
+        ],
+        "unit_amount": 15000000,
+        "custom_attributes": [
+          {
+            "display_name": "Network",
+            "value": "TRON Nile"
+          },
+          {
+            "display_name": "Asset",
+            "value": "TRC20 USDT"
+          }
+        ],
+        "totals": [
+          {
+            "type": "items_base_amount",
+            "display_text": "Base amount",
+            "amount": 15000000
+          },
+          {
+            "type": "subtotal",
+            "display_text": "Subtotal",
+            "amount": 15000000
+          },
+          {
+            "type": "total",
+            "display_text": "Total",
+            "amount": 15000000
+          }
+        ]
+      }
+    ],
+    "totals": [
+      {
+        "type": "items_base_amount",
+        "display_text": "Item total",
+        "amount": 15000000
+      },
+      {
+        "type": "subtotal",
+        "display_text": "Subtotal",
+        "amount": 15000000
+      },
+      {
+        "type": "tax",
+        "display_text": "Tax",
+        "amount": 0
+      },
+      {
+        "type": "total",
+        "display_text": "Total",
+        "amount": 15000000
+      }
+    ],
+    "currency": "USDT",
+    "presentment_currency": "USDT",
+    "total_amount": "15.000000",
+    "amount_in_base_units": 15000000,
+    "payment_protocol": "acp_x402_tron_usdt",
+    "txHash": null,
+    "createdAt": "2026-04-22T17:38:24.414Z",
+    "updatedAt": "2026-04-22T19:09:07.095Z",
+    "humanApprovedAt": "2026-04-22T17:38:27.793Z",
+    "last_error": "Internal Server Error"
+  },
+  {
+    "id": "cs_tron_1776884678694_71888",
+    "type": "acp_checkout_session",
+    "merchant_order_id": "ord_cs_tron_1776884678694_71888",
+    "status": "failed",
+    "transfer_state": "x402_payment_failed",
+    "buyer": null,
+    "fulfillment_details": null,
+    "line_items": [
+      {
+        "id": "li_1",
+        "item": {
+          "id": "premium_data_access"
+        },
+        "quantity": 1,
+        "name": "Premium Agent Data Access",
+        "description": "One-time access to a premium commerce intelligence payload for AI agents.",
+        "images": [
+          "http://localhost:8000/public/product-premium-data.svg"
+        ],
+        "unit_amount": 15000000,
+        "custom_attributes": [
+          {
+            "display_name": "Network",
+            "value": "TRON Nile"
+          },
+          {
+            "display_name": "Asset",
+            "value": "TRC20 USDT"
+          }
+        ],
+        "totals": [
+          {
+            "type": "items_base_amount",
+            "display_text": "Base amount",
+            "amount": 15000000
+          },
+          {
+            "type": "subtotal",
+            "display_text": "Subtotal",
+            "amount": 15000000
+          },
+          {
+            "type": "total",
+            "display_text": "Total",
+            "amount": 15000000
+          }
+        ]
+      }
+    ],
+    "totals": [
+      {
+        "type": "items_base_amount",
+        "display_text": "Item total",
+        "amount": 15000000
+      },
+      {
+        "type": "subtotal",
+        "display_text": "Subtotal",
+        "amount": 15000000
+      },
+      {
+        "type": "tax",
+        "display_text": "Tax",
+        "amount": 0
+      },
+      {
+        "type": "total",
+        "display_text": "Total",
+        "amount": 15000000
+      }
+    ],
+    "currency": "USDT",
+    "presentment_currency": "USDT",
+    "total_amount": "15.000000",
+    "amount_in_base_units": 15000000,
+    "payment_protocol": "acp_x402_tron_usdt",
+    "txHash": null,
+    "createdAt": "2026-04-22T19:04:38.694Z",
+    "updatedAt": "2026-04-22T19:09:07.095Z",
+    "humanApprovedAt": "2026-04-22T19:04:43.193Z",
+    "last_error": "Internal Server Error"
+  },
+  {
+    "id": "cs_tron_1776885774714_87078",
+    "type": "acp_checkout_session",
+    "merchant_order_id": "ord_cs_tron_1776885774714_87078",
+    "status": "failed",
+    "transfer_state": "x402_payment_failed",
+    "buyer": null,
+    "fulfillment_details": null,
+    "line_items": [
+      {
+        "id": "li_1",
+        "item": {
+          "id": "premium_data_access"
+        },
+        "quantity": 1,
+        "name": "Premium Agent Data Access",
+        "description": "One-time access to a premium commerce intelligence payload for AI agents.",
+        "images": [
+          "http://localhost:8000/public/product-premium-data.svg"
+        ],
+        "unit_amount": 15000000,
+        "custom_attributes": [
+          {
+            "display_name": "Network",
+            "value": "TRON Nile"
+          },
+          {
+            "display_name": "Asset",
+            "value": "TRC20 USDT"
+          }
+        ],
+        "totals": [
+          {
+            "type": "items_base_amount",
+            "display_text": "Base amount",
+            "amount": 15000000
+          },
+          {
+            "type": "subtotal",
+            "display_text": "Subtotal",
+            "amount": 15000000
+          },
+          {
+            "type": "total",
+            "display_text": "Total",
+            "amount": 15000000
+          }
+        ]
+      }
+    ],
+    "totals": [
+      {
+        "type": "items_base_amount",
+        "display_text": "Item total",
+        "amount": 15000000
+      },
+      {
+        "type": "subtotal",
+        "display_text": "Subtotal",
+        "amount": 15000000
+      },
+      {
+        "type": "tax",
+        "display_text": "Tax",
+        "amount": 0
+      },
+      {
+        "type": "total",
+        "display_text": "Total",
+        "amount": 15000000
+      }
+    ],
+    "currency": "USDT",
+    "presentment_currency": "USDT",
+    "total_amount": "15.000000",
+    "amount_in_base_units": 15000000,
+    "payment_protocol": "acp_x402_tron_usdt",
+    "txHash": null,
+    "createdAt": "2026-04-22T19:22:54.714Z",
+    "updatedAt": "2026-04-22T19:23:01.068Z",
+    "humanApprovedAt": "2026-04-22T19:22:57.099Z",
+    "last_error": "{\"error\":\"Settlement failed: transaction_failed\",\"network\":\"tron:nile\"}"
+  },
+  {
+    "id": "cs_tron_1776886487746_28468",
+    "type": "acp_checkout_session",
+    "merchant_order_id": "ord_cs_tron_1776886487746_28468",
+    "status": "failed",
+    "transfer_state": "x402_payment_failed",
+    "buyer": null,
+    "fulfillment_details": null,
+    "line_items": [
+      {
+        "id": "li_1",
+        "item": {
+          "id": "premium_data_access"
+        },
+        "quantity": 1,
+        "name": "Premium Agent Data Access",
+        "description": "One-time access to a premium commerce intelligence payload for AI agents.",
+        "images": [
+          "http://localhost:8000/public/product-premium-data.svg"
+        ],
+        "unit_amount": 15000000,
+        "custom_attributes": [
+          {
+            "display_name": "Network",
+            "value": "TRON Nile"
+          },
+          {
+            "display_name": "Asset",
+            "value": "TRC20 USDT"
+          }
+        ],
+        "totals": [
+          {
+            "type": "items_base_amount",
+            "display_text": "Base amount",
+            "amount": 15000000
+          },
+          {
+            "type": "subtotal",
+            "display_text": "Subtotal",
+            "amount": 15000000
+          },
+          {
+            "type": "total",
+            "display_text": "Total",
+            "amount": 15000000
+          }
+        ]
+      }
+    ],
+    "totals": [
+      {
+        "type": "items_base_amount",
+        "display_text": "Item total",
+        "amount": 15000000
+      },
+      {
+        "type": "subtotal",
+        "display_text": "Subtotal",
+        "amount": 15000000
+      },
+      {
+        "type": "tax",
+        "display_text": "Tax",
+        "amount": 0
+      },
+      {
+        "type": "total",
+        "display_text": "Total",
+        "amount": 15000000
+      }
+    ],
+    "currency": "USDT",
+    "presentment_currency": "USDT",
+    "total_amount": "15.000000",
+    "amount_in_base_units": 15000000,
+    "payment_protocol": "acp_x402_tron_usdt",
+    "txHash": null,
+    "createdAt": "2026-04-22T19:34:47.746Z",
+    "updatedAt": "2026-04-22T19:35:30.764Z",
+    "humanApprovedAt": "2026-04-22T19:35:20.395Z",
+    "last_error": "{\"error\":\"Settlement failed: insufficient balance in gasfree wallet TNtgLb8a3cGCoCdcdXPvFWYXqsUELrWFSY\",\"network\":\"tron:nile\"}"
+  },
+  {
+    "id": "cs_tron_1776892030342_35413",
+    "type": "acp_checkout_session",
+    "merchant_order_id": "ord_cs_tron_1776892030342_35413",
+    "status": "failed",
+    "transfer_state": "x402_payment_failed",
+    "buyer": null,
+    "fulfillment_details": null,
+    "line_items": [
+      {
+        "id": "li_1",
+        "item": {
+          "id": "premium_data_access"
+        },
+        "quantity": 1,
+        "name": "Premium Agent Data Access",
+        "description": "One-time access to a premium commerce intelligence payload for AI agents.",
+        "images": [
+          "http://localhost:8000/public/product-premium-data.svg"
+        ],
+        "unit_amount": 15000000,
+        "custom_attributes": [
+          {
+            "display_name": "Network",
+            "value": "TRON Nile"
+          },
+          {
+            "display_name": "Asset",
+            "value": "TRC20 USDT"
+          }
+        ],
+        "totals": [
+          {
+            "type": "items_base_amount",
+            "display_text": "Base amount",
+            "amount": 15000000
+          },
+          {
+            "type": "subtotal",
+            "display_text": "Subtotal",
+            "amount": 15000000
+          },
+          {
+            "type": "total",
+            "display_text": "Total",
+            "amount": 15000000
+          }
+        ]
+      }
+    ],
+    "totals": [
+      {
+        "type": "items_base_amount",
+        "display_text": "Item total",
+        "amount": 15000000
+      },
+      {
+        "type": "subtotal",
+        "display_text": "Subtotal",
+        "amount": 15000000
+      },
+      {
+        "type": "tax",
+        "display_text": "Tax",
+        "amount": 0
+      },
+      {
+        "type": "total",
+        "display_text": "Total",
+        "amount": 15000000
+      }
+    ],
+    "currency": "USDT",
+    "presentment_currency": "USDT",
+    "total_amount": "15.000000",
+    "amount_in_base_units": 15000000,
+    "payment_protocol": "acp_x402_tron_usdt",
+    "txHash": null,
+    "createdAt": "2026-04-22T21:07:10.341Z",
+    "updatedAt": "2026-04-22T21:07:14.028Z",
+    "humanApprovedAt": "2026-04-22T21:07:10.388Z",
+    "last_error": "{\"error\":\"Settlement failed: insufficient balance in gasfree wallet TNtgLb8a3cGCoCdcdXPvFWYXqsUELrWFSY\",\"network\":\"tron:nile\"}"
+  },
+  {
+    "id": "cs_tron_1776892359714_32080",
+    "type": "acp_checkout_session",
+    "merchant_order_id": "ord_cs_tron_1776892359714_32080",
+    "status": "completed",
+    "transfer_state": "completed",
+    "buyer": null,
+    "fulfillment_details": null,
+    "line_items": [
+      {
+        "id": "li_1",
+        "item": {
+          "id": "premium_data_access"
+        },
+        "quantity": 1,
+        "name": "Premium Agent Data Access",
+        "description": "One-time access to a premium commerce intelligence payload for AI agents.",
+        "images": [
+          "http://localhost:8000/public/product-premium-data.svg"
+        ],
+        "unit_amount": 15000000,
+        "custom_attributes": [
+          {
+            "display_name": "Network",
+            "value": "TRON Nile"
+          },
+          {
+            "display_name": "Asset",
+            "value": "TRC20 USDT"
+          }
+        ],
+        "totals": [
+          {
+            "type": "items_base_amount",
+            "display_text": "Base amount",
+            "amount": 15000000
+          },
+          {
+            "type": "subtotal",
+            "display_text": "Subtotal",
+            "amount": 15000000
+          },
+          {
+            "type": "total",
+            "display_text": "Total",
+            "amount": 15000000
+          }
+        ]
+      }
+    ],
+    "totals": [
+      {
+        "type": "items_base_amount",
+        "display_text": "Item total",
+        "amount": 15000000
+      },
+      {
+        "type": "subtotal",
+        "display_text": "Subtotal",
+        "amount": 15000000
+      },
+      {
+        "type": "tax",
+        "display_text": "Tax",
+        "amount": 0
+      },
+      {
+        "type": "total",
+        "display_text": "Total",
+        "amount": 15000000
+      }
+    ],
+    "currency": "USDT",
+    "presentment_currency": "USDT",
+    "total_amount": "15.000000",
+    "amount_in_base_units": 15000000,
+    "payment_protocol": "acp_x402_tron_usdt",
+    "txHash": "37cc3dea5c29081476d5e7210bb176ae06ec887d805a18e1647b475739ec3182",
+    "createdAt": "2026-04-22T21:12:39.714Z",
+    "updatedAt": "2026-04-22T21:20:00.000Z",
+    "humanApprovedAt": "2026-04-22T21:12:49.638Z",
+    "payment_data": {
+      "handler_id": "bankofai_x402_tron_usdt",
+      "instrument": {
+        "type": "x402_settlement",
+        "credential": {
+          "type": "x402_tx_hash",
+          "transaction": "37cc3dea5c29081476d5e7210bb176ae06ec887d805a18e1647b475739ec3182",
+          "verification_status": "deferred",
+          "verification_error": "Transaction verification failed: verification_error: Server error '502 Bad Gateway' for url 'https://api.nileex.io/wallet/gettransactioninfobyid'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502"
+        }
+      }
+    },
+    "order": {
+      "type": "order",
+      "id": "ord_cs_tron_1776892359714_32080",
+      "checkout_session_id": "cs_tron_1776892359714_32080",
+      "order_number": "cs_tron_177689235",
+      "permalink_url": "http://localhost:8000/acp-explorer?session=cs_tron_1776892359714_32080",
+      "status": "confirmed",
+      "line_items": [
+        {
+          "id": "li_1",
+          "item": {
+            "id": "premium_data_access"
+          },
+          "quantity": 1,
+          "name": "Premium Agent Data Access",
+          "description": "One-time access to a premium commerce intelligence payload for AI agents.",
+          "images": [
+            "http://localhost:8000/public/product-premium-data.svg"
+          ],
+          "unit_amount": 15000000,
+          "custom_attributes": [
+            {
+              "display_name": "Network",
+              "value": "TRON Nile"
+            },
+            {
+              "display_name": "Asset",
+              "value": "TRC20 USDT"
+            }
+          ],
+          "totals": [
+            {
+              "type": "items_base_amount",
+              "display_text": "Base amount",
+              "amount": 15000000
+            },
+            {
+              "type": "subtotal",
+              "display_text": "Subtotal",
+              "amount": 15000000
+            },
+            {
+              "type": "total",
+              "display_text": "Total",
+              "amount": 15000000
+            }
+          ]
+        }
+      ],
+      "totals": [
+        {
+          "type": "items_base_amount",
+          "display_text": "Item total",
+          "amount": 15000000
+        },
+        {
+          "type": "subtotal",
+          "display_text": "Subtotal",
+          "amount": 15000000
+        },
+        {
+          "type": "tax",
+          "display_text": "Tax",
+          "amount": 0
+        },
+        {
+          "type": "total",
+          "display_text": "Total",
+          "amount": 15000000
+        }
+      ],
+      "confirmation": {
+        "confirmation_number": "ord_cs_tron_1776892359714_32080",
+        "confirmed_at": "2026-04-22T21:20:00.000Z"
+      }
+    }
+  },
+  {
+    "id": "cs_tron_1776893149616_13180",
+    "type": "acp_checkout_session",
+    "merchant_order_id": "ord_cs_tron_1776893149616_13180",
+    "status": "completed",
+    "transfer_state": "completed",
+    "buyer": null,
+    "fulfillment_details": null,
+    "line_items": [
+      {
+        "id": "li_1",
+        "item": {
+          "id": "premium_data_access"
+        },
+        "quantity": 1,
+        "name": "Premium Agent Data Access",
+        "description": "One-time access to a premium commerce intelligence payload for AI agents.",
+        "images": [
+          "http://localhost:8000/public/product-premium-data.svg"
+        ],
+        "unit_amount": 15000000,
+        "custom_attributes": [
+          {
+            "display_name": "Network",
+            "value": "TRON Nile"
+          },
+          {
+            "display_name": "Asset",
+            "value": "TRC20 USDT"
+          }
+        ],
+        "totals": [
+          {
+            "type": "items_base_amount",
+            "display_text": "Base amount",
+            "amount": 15000000
+          },
+          {
+            "type": "subtotal",
+            "display_text": "Subtotal",
+            "amount": 15000000
+          },
+          {
+            "type": "total",
+            "display_text": "Total",
+            "amount": 15000000
+          }
+        ]
+      }
+    ],
+    "totals": [
+      {
+        "type": "items_base_amount",
+        "display_text": "Item total",
+        "amount": 15000000
+      },
+      {
+        "type": "subtotal",
+        "display_text": "Subtotal",
+        "amount": 15000000
+      },
+      {
+        "type": "tax",
+        "display_text": "Tax",
+        "amount": 0
+      },
+      {
+        "type": "total",
+        "display_text": "Total",
+        "amount": 15000000
+      }
+    ],
+    "currency": "USDT",
+    "presentment_currency": "USDT",
+    "total_amount": "15.000000",
+    "amount_in_base_units": 15000000,
+    "payment_protocol": "acp_x402_tron_usdt",
+    "txHash": "30e6899ccf3b2bdd3100267e456238e9a0a4005c18315a97f512ed9ee344f796",
+    "createdAt": "2026-04-22T21:25:49.616Z",
+    "updatedAt": "2026-04-22T21:38:48.755Z",
+    "humanApprovedAt": "2026-04-22T21:38:35.626Z",
+    "last_error": null,
+    "payment_data": {
+      "handler_id": "bankofai_x402_tron_usdt",
+      "instrument": {
+        "type": "x402_settlement",
+        "credential": {
+          "type": "x402_tx_hash",
+          "transaction": "30e6899ccf3b2bdd3100267e456238e9a0a4005c18315a97f512ed9ee344f796",
+          "verification_status": "deferred",
+          "verification_error": "Transaction verification failed: verification_error: Server error '502 Bad Gateway' for url 'https://api.nileex.io/wallet/gettransactioninfobyid'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502"
+        }
+      }
+    },
+    "order": {
+      "type": "order",
+      "id": "ord_cs_tron_1776893149616_13180",
+      "checkout_session_id": "cs_tron_1776893149616_13180",
+      "order_number": "cs_tron_1776893149",
+      "permalink_url": "http://localhost:8000/acp-explorer?session=cs_tron_1776893149616_13180",
+      "status": "confirmed",
+      "line_items": [
+        {
+          "id": "li_1",
+          "item": {
+            "id": "premium_data_access"
+          },
+          "quantity": 1,
+          "name": "Premium Agent Data Access",
+          "description": "One-time access to a premium commerce intelligence payload for AI agents.",
+          "images": [
+            "http://localhost:8000/public/product-premium-data.svg"
+          ],
+          "unit_amount": 15000000,
+          "custom_attributes": [
+            {
+              "display_name": "Network",
+              "value": "TRON Nile"
+            },
+            {
+              "display_name": "Asset",
+              "value": "TRC20 USDT"
+            }
+          ],
+          "totals": [
+            {
+              "type": "items_base_amount",
+              "display_text": "Base amount",
+              "amount": 15000000
+            },
+            {
+              "type": "subtotal",
+              "display_text": "Subtotal",
+              "amount": 15000000
+            },
+            {
+              "type": "total",
+              "display_text": "Total",
+              "amount": 15000000
+            }
+          ]
+        }
+      ],
+      "totals": [
+        {
+          "type": "items_base_amount",
+          "display_text": "Item total",
+          "amount": 15000000
+        },
+        {
+          "type": "subtotal",
+          "display_text": "Subtotal",
+          "amount": 15000000
+        },
+        {
+          "type": "tax",
+          "display_text": "Tax",
+          "amount": 0
+        },
+        {
+          "type": "total",
+          "display_text": "Total",
+          "amount": 15000000
+        }
+      ],
+      "confirmation": {
+        "confirmation_number": "ord_cs_tron_1776893149616_13180",
+        "confirmed_at": "2026-04-22T21:38:48.755Z"
+      }
+    }
+  },
+  {
+    "id": "cs_tron_1776894167316_96792",
+    "type": "acp_checkout_session",
+    "merchant_order_id": "ord_cs_tron_1776894167316_96792",
+    "status": "completed",
+    "transfer_state": "completed",
+    "buyer": null,
+    "fulfillment_details": null,
+    "line_items": [
+      {
+        "id": "li_1",
+        "item": {
+          "id": "premium_data_access"
+        },
+        "quantity": 1,
+        "name": "Premium Agent Data Access",
+        "description": "One-time access to a premium commerce intelligence payload for AI agents.",
+        "images": [
+          "http://localhost:8000/public/product-premium-data.svg"
+        ],
+        "unit_amount": 15000000,
+        "custom_attributes": [
+          {
+            "display_name": "Network",
+            "value": "TRON Nile"
+          },
+          {
+            "display_name": "Asset",
+            "value": "TRC20 USDT"
+          }
+        ],
+        "totals": [
+          {
+            "type": "items_base_amount",
+            "display_text": "Base amount",
+            "amount": 15000000
+          },
+          {
+            "type": "subtotal",
+            "display_text": "Subtotal",
+            "amount": 15000000
+          },
+          {
+            "type": "total",
+            "display_text": "Total",
+            "amount": 15000000
+          }
+        ]
+      }
+    ],
+    "totals": [
+      {
+        "type": "items_base_amount",
+        "display_text": "Item total",
+        "amount": 15000000
+      },
+      {
+        "type": "subtotal",
+        "display_text": "Subtotal",
+        "amount": 15000000
+      },
+      {
+        "type": "tax",
+        "display_text": "Tax",
+        "amount": 0
+      },
+      {
+        "type": "total",
+        "display_text": "Total",
+        "amount": 15000000
+      }
+    ],
+    "currency": "USDT",
+    "presentment_currency": "USDT",
+    "total_amount": "15.000000",
+    "amount_in_base_units": 15000000,
+    "payment_protocol": "acp_x402_tron_usdt",
+    "txHash": "c21b5af7f583a93f28578b9c0f9632ffb13ef9bb52a619b496f4eb2d225fe1ac",
+    "createdAt": "2026-04-22T21:42:47.316Z",
+    "updatedAt": "2026-04-22T21:43:32.126Z",
+    "last_error": null,
+    "humanApprovedAt": "2026-04-22T21:43:12.083Z",
+    "payment_data": {
+      "handler_id": "bankofai_x402_tron_usdt",
+      "instrument": {
+        "type": "x402_settlement",
+        "credential": {
+          "type": "x402_tx_hash",
+          "transaction": "c21b5af7f583a93f28578b9c0f9632ffb13ef9bb52a619b496f4eb2d225fe1ac",
+          "verification_status": "deferred",
+          "verification_error": "Transaction verification failed: verification_error: Server error '502 Bad Gateway' for url 'https://api.nileex.io/wallet/gettransactioninfobyid'\nFor more information check: https://developer.mozilla.org/en-US/docs/Web/HTTP/Status/502"
+        }
+      }
+    },
+    "order": {
+      "type": "order",
+      "id": "ord_cs_tron_1776894167316_96792",
+      "checkout_session_id": "cs_tron_1776894167316_96792",
+      "order_number": "cs_tron_1776894167",
+      "permalink_url": "http://localhost:8000/acp-explorer?session=cs_tron_1776894167316_96792",
+      "status": "confirmed",
+      "line_items": [
+        {
+          "id": "li_1",
+          "item": {
+            "id": "premium_data_access"
+          },
+          "quantity": 1,
+          "name": "Premium Agent Data Access",
+          "description": "One-time access to a premium commerce intelligence payload for AI agents.",
+          "images": [
+            "http://localhost:8000/public/product-premium-data.svg"
+          ],
+          "unit_amount": 15000000,
+          "custom_attributes": [
+            {
+              "display_name": "Network",
+              "value": "TRON Nile"
+            },
+            {
+              "display_name": "Asset",
+              "value": "TRC20 USDT"
+            }
+          ],
+          "totals": [
+            {
+              "type": "items_base_amount",
+              "display_text": "Base amount",
+              "amount": 15000000
+            },
+            {
+              "type": "subtotal",
+              "display_text": "Subtotal",
+              "amount": 15000000
+            },
+            {
+              "type": "total",
+              "display_text": "Total",
+              "amount": 15000000
+            }
+          ]
+        }
+      ],
+      "totals": [
+        {
+          "type": "items_base_amount",
+          "display_text": "Item total",
+          "amount": 15000000
+        },
+        {
+          "type": "subtotal",
+          "display_text": "Subtotal",
+          "amount": 15000000
+        },
+        {
+          "type": "tax",
+          "display_text": "Tax",
+          "amount": 0
+        },
+        {
+          "type": "total",
+          "display_text": "Total",
+          "amount": 15000000
+        }
+      ],
+      "confirmation": {
+        "confirmation_number": "ord_cs_tron_1776894167316_96792",
+        "confirmed_at": "2026-04-22T21:43:32.126Z"
+      }
+    }
+  },
+  {
+    "id": "cs_tron_1776895716680_82554",
+    "type": "acp_checkout_session",
+    "merchant_order_id": "ord_cs_tron_1776895716680_82554",
+    "status": "completed",
+    "transfer_state": "completed",
+    "buyer": null,
+    "fulfillment_details": null,
+    "line_items": [
+      {
+        "id": "li_1",
+        "item": {
+          "id": "premium_data_access"
+        },
+        "quantity": 1,
+        "name": "Premium Agent Data Access",
+        "description": "One-time access to a premium commerce intelligence payload for AI agents.",
+        "images": [
+          "http://localhost:8000/public/product-premium-data.svg"
+        ],
+        "unit_amount": 15000000,
+        "custom_attributes": [
+          {
+            "display_name": "Network",
+            "value": "TRON Nile"
+          },
+          {
+            "display_name": "Asset",
+            "value": "TRC20 USDT"
+          }
+        ],
+        "totals": [
+          {
+            "type": "items_base_amount",
+            "display_text": "Base amount",
+            "amount": 15000000
+          },
+          {
+            "type": "subtotal",
+            "display_text": "Subtotal",
+            "amount": 15000000
+          },
+          {
+            "type": "total",
+            "display_text": "Total",
+            "amount": 15000000
+          }
+        ]
+      }
+    ],
+    "totals": [
+      {
+        "type": "items_base_amount",
+        "display_text": "Item total",
+        "amount": 15000000
+      },
+      {
+        "type": "subtotal",
+        "display_text": "Subtotal",
+        "amount": 15000000
+      },
+      {
+        "type": "tax",
+        "display_text": "Tax",
+        "amount": 0
+      },
+      {
+        "type": "total",
+        "display_text": "Total",
+        "amount": 15000000
+      }
+    ],
+    "currency": "USDT",
+    "presentment_currency": "USDT",
+    "total_amount": "15.000000",
+    "amount_in_base_units": 15000000,
+    "payment_protocol": "acp_x402_tron_usdt",
+    "txHash": "8834b2ff88388d474a7d9963a79a1b5fb816750fc002446d70c60f553f8b938c",
+    "createdAt": "2026-04-22T22:08:36.680Z",
+    "updatedAt": "2026-04-22T22:08:49.386Z",
+    "last_error": null,
+    "humanApprovedAt": "2026-04-22T22:08:40.044Z",
+    "payment_data": {
+      "handler_id": "bankofai_x402_tron_usdt",
+      "instrument": {
+        "type": "x402_settlement",
+        "credential": {
+          "type": "x402_payment_response",
+          "payment_id": "0x06a5edcf8b70c6384e8c62aac8b204ac",
+          "transaction": "8834b2ff88388d474a7d9963a79a1b5fb816750fc002446d70c60f553f8b938c",
+          "settlement": {
+            "success": true,
+            "transaction": "8834b2ff88388d474a7d9963a79a1b5fb816750fc002446d70c60f553f8b938c",
+            "network": "tron:nile",
+            "errorReason": null
+          }
+        }
+      }
+    },
+    "order": {
+      "type": "order",
+      "id": "ord_cs_tron_1776895716680_82554",
+      "checkout_session_id": "cs_tron_1776895716680_82554",
+      "order_number": "cs_tron_1776895716",
+      "permalink_url": "http://localhost:8000/acp-explorer?session=cs_tron_1776895716680_82554",
+      "status": "confirmed",
+      "line_items": [
+        {
+          "id": "li_1",
+          "item": {
+            "id": "premium_data_access"
+          },
+          "quantity": 1,
+          "name": "Premium Agent Data Access",
+          "description": "One-time access to a premium commerce intelligence payload for AI agents.",
+          "images": [
+            "http://localhost:8000/public/product-premium-data.svg"
+          ],
+          "unit_amount": 15000000,
+          "custom_attributes": [
+            {
+              "display_name": "Network",
+              "value": "TRON Nile"
+            },
+            {
+              "display_name": "Asset",
+              "value": "TRC20 USDT"
+            }
+          ],
+          "totals": [
+            {
+              "type": "items_base_amount",
+              "display_text": "Base amount",
+              "amount": 15000000
+            },
+            {
+              "type": "subtotal",
+              "display_text": "Subtotal",
+              "amount": 15000000
+            },
+            {
+              "type": "total",
+              "display_text": "Total",
+              "amount": 15000000
+            }
+          ]
+        }
+      ],
+      "totals": [
+        {
+          "type": "items_base_amount",
+          "display_text": "Item total",
+          "amount": 15000000
+        },
+        {
+          "type": "subtotal",
+          "display_text": "Subtotal",
+          "amount": 15000000
+        },
+        {
+          "type": "tax",
+          "display_text": "Tax",
+          "amount": 0
+        },
+        {
+          "type": "total",
+          "display_text": "Total",
+          "amount": 15000000
+        }
+      ],
+      "confirmation": {
+        "confirmation_number": "ord_cs_tron_1776895716680_82554",
+        "confirmed_at": "2026-04-22T22:08:49.386Z"
+      }
+    }
+  },
+  {
+    "id": "x402-06a5edcf8b70c6384e8c62aac8b204ac",
+    "type": "x402_payment",
+    "status": "completed",
+    "currency": "USDT",
+    "total_amount": 15,
+    "amount_in_base_units": 15000000,
+    "txHash": "8834b2ff88388d474a7d9963a79a1b5fb816750fc002446d70c60f553f8b938c",
+    "buyer": "TWtfUYRLfA4b61eJ3wwHmYcieV14rUTMCW",
+    "payment_protocol": "bankofai_x402",
+    "acp_checkout_session_id": "cs_tron_1776895716680_82554",
+    "scheme": "exact_gasfree",
+    "network": "tron:nile",
+    "createdAt": "2026-04-22T22:08:49.387Z",
+    "updatedAt": "2026-04-22T22:08:49.387Z"
   }
 ]

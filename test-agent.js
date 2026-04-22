@@ -47,12 +47,15 @@ async function runX402Agent() {
     });
 
     const client = new X402FetchClient(x402Client);
-    const resourceUrl = `${MERCHANT_BASE_URL}${RESOURCE_PATH}`;
+    const resourceUrl = new URL(RESOURCE_PATH, MERCHANT_BASE_URL);
+    if (process.env.ACP_CHECKOUT_SESSION_ID) {
+      resourceUrl.searchParams.set('checkout_session_id', process.env.ACP_CHECKOUT_SESSION_ID);
+    }
 
     console.log(`[agent] Wallet address: ${tronSigner.getAddress()}`);
-    console.log(`[agent] GET ${resourceUrl}`);
+    console.log(`[agent] GET ${resourceUrl.toString()}`);
 
-    const response = await client.get(resourceUrl);
+    const response = await client.get(resourceUrl.toString());
     const paymentResponseHeader = response.headers.get('payment-response');
     console.log(`[agent] Resource response: HTTP ${response.status} ${response.statusText}`);
 

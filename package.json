@@ -6,11 +6,12 @@
   "scripts": {
     "server": "node server.js",
     "dev": "nodemon server.js",
-    "x402:service": "python3 x402_service.py",
+    "x402:service": "./.venv-x402/bin/python x402_service.py",
     "agent:x402": "node test-agent.js",
     "agent:acp": "node test-acp-agent.js",
     "check:balance": "node check-balance.js",
-    "check": "node --check server.js && node --check db.js && node --check x402-utils.js && node --check test-agent.js && node --check test-acp-agent.js && node --check check-balance.js"
+    "check:gasfree": "node check-gasfree.js",
+    "check": "node --check server.js && node --check db.js && node --check x402-utils.js && node --check test-agent.js && node --check test-acp-agent.js && node --check check-balance.js && node --check check-gasfree.js"
   },
   "keywords": [
     "tron",
