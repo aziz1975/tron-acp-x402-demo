@@ -7,6 +7,21 @@ Local demo for two agent-commerce flows on TRON Nile:
 
 ACP reference: `2026-04-17` public spec snapshot from `agentic-commerce-protocol/agentic-commerce-protocol`.
 
+## Referenced Specs And Docs
+
+This repo combines ACP checkout state with x402/GasFree settlement on TRON Nile. These are the main external references used by the implementation:
+
+- [Agentic Commerce Protocol docs](https://www.agenticcommerce.dev/docs): ACP concepts and checkout flow.
+- [ACP GitHub repository](https://github.com/agentic-commerce-protocol/agentic-commerce-protocol): source specs, schemas, examples, and changelog.
+- [ACP 2026-04-17 OpenAPI specs](https://github.com/agentic-commerce-protocol/agentic-commerce-protocol/tree/main/spec/2026-04-17/openapi): version this demo targets through `API-Version: 2026-04-17`.
+- [ACP 2026-04-17 examples](https://github.com/agentic-commerce-protocol/agentic-commerce-protocol/tree/main/examples/2026-04-17): request and response examples for the same ACP version.
+- [x402 standard site](https://www.x402.org/): HTTP `402 Payment Required` payment-standard background.
+- [x402 Foundation repository](https://github.com/x402-foundation/x402): reference x402 protocol implementation and specs.
+- [Bank of AI x402 docs](https://docs.bankofai.io/Openclaw-extension/Setup-use/): TRON/BSC x402 flow used by this demo.
+- [BofAI x402 SDK repository](https://github.com/BofAI/x402): Python and TypeScript SDKs used by `x402_service.py` and `server.js`.
+- [bankofai-x402 on PyPI](https://pypi.org/project/bankofai-x402/): Python package installed by `requirements-x402-service.txt`.
+- [TRON network docs](https://developers.tron.network/docs/networks): TRON network and testnet RPC context.
+
 ## What Runs Here
 
 This project starts three local processes:
