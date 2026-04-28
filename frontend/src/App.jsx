@@ -218,7 +218,6 @@ export default function App() {
         <nav>
           <a className="active" href="#overview"><Activity size={18} /> Overview</a>
           <a href={`${API_BASE}/acp-explorer`} target="_blank" rel="noreferrer"><ExternalLink size={18} /> ACP Explorer</a>
-          <a href={`${API_BASE}/agentic_commerce/checkout_sessions/example`} target="_blank" rel="noreferrer"><ExternalLink size={18} /> Checkout API</a>
         </nav>
       </aside>
 

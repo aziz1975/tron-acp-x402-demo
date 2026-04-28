@@ -240,7 +240,7 @@ Then find and fund the derived GasFree wallet:
 npm run check:gasfree
 ```
 
-Copy the printed `GasFree wallet` address and send it enough Nile USDT for:
+If the status is not OK, copy the printed `GasFree wallet` address and send it enough Nile USDT for:
 
 ```text
 15.000000 USDT payment + GasFree transfer fee
@@ -273,7 +273,7 @@ cd frontend
 npm run dev
 ```
 
-### 5. Verify Services
+### 5. Verify Services (in a new terminal)
 
 ```bash
 curl http://localhost:8001/health
@@ -292,7 +292,7 @@ The x402 health response should include:
 
 ### 6. Test In The Dashboard
 
-Open:
+Open frontend:
 
 ```text
 http://localhost:5173
