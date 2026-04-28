@@ -58,7 +58,7 @@ The Express server stores a record in `orders.json` with:
 
 ```text
 status: pending_approval
-transfer_state: awaiting_merchant_approval
+transfer_state: awaiting_human_approval
 payment_protocol: acp_x402_tron_usdt
 amount: 15 USDT
 ```
@@ -172,7 +172,7 @@ GET  /agentic_commerce/checkout_sessions/:id
 
 ## Requirements
 
-- Node.js 22+
+- Node.js 22.12+
 - npm 10+
 - Python 3.10+
 - A TRON Nile merchant address for `MERCHANT_ADDRESS`
@@ -278,7 +278,7 @@ npm run dev
 
 ```bash
 curl http://localhost:8001/health
-curl http://localhost:8000/agentic_commerce/checkout_sessions
+curl http://localhost:8000/api/orders
 ```
 
 The x402 health response should include:
@@ -443,7 +443,9 @@ Open:
 
 - Dashboard: `http://localhost:5173`
 - ACP explorer: `http://localhost:8000/acp-explorer`
-- ACP checkout API: `http://localhost:8000/agentic_commerce/checkout_sessions`
+- Orders API: `http://localhost:8000/api/orders`
+
+The ACP checkout session endpoint is POST-only for creation. Use `GET /agentic_commerce/checkout_sessions/<checkout_session_id>` after creating a session.
 
 ## ACP Checkout Smoke Test
 
