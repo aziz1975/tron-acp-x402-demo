@@ -350,74 +350,8 @@ p {
   gap: 8px;
 }
 
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(5, 8, 10, 0.7);
-  display: grid;
-  place-items: center;
-  padding: 20px;
-  z-index: 10;
-}
-
-.modal {
-  width: min(720px, 100%);
-  border: 1px solid #30404a;
-  border-radius: 8px;
-  background: #10171b;
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
-}
-
-.modal-header {
-  height: 58px;
-  border-bottom: 1px solid #27323a;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 16px;
-}
-
-.modal-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 750;
-}
-
-.terminal {
-  height: 360px;
-  overflow: auto;
-  padding: 18px;
-  font-family: "SFMono-Regular", Consolas, monospace;
-  font-size: 13px;
-}
-
-.terminal-line {
-  display: flex;
-  gap: 10px;
-  color: #dce7e0;
-  margin-bottom: 12px;
-}
-
-.terminal-line span:first-child {
-  color: #65d994;
-}
-
-.terminal-line.muted {
-  color: #7f8d85;
-}
-
-.cursor {
-  animation: pulse 1s infinite;
-}
-
 .spin {
   animation: spin 0.9s linear infinite;
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.35; }
 }
 
 @keyframes spin {

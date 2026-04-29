@@ -6,10 +6,8 @@ import {
   CreditCard,
   ExternalLink,
   LoaderCircle,
-  Play,
   RefreshCw,
   Send,
-  Terminal,
   Wallet,
   X
 } from 'lucide-react';
@@ -82,53 +80,10 @@ function SessionRow({ session, onApprove, onReject, onPay, payingId }) {
   );
 }
 
-function AgentModal({ open, onClose, onRun }) {
-  const [steps, setSteps] = useState([]);
-
-  useEffect(() => {
-    if (!open) return undefined;
-    const timeline = [
-      [300, 'Agent VM started'],
-      [1200, 'Requesting /api/premium-data'],
-      [2600, 'Received HTTP 402 challenge'],
-      [4200, 'Selecting TRON Nile USDT payment requirement'],
-      [6400, 'Signing x402 payment payload'],
-      [8200, 'Retrying with PAYMENT-SIGNATURE'],
-      [11000, 'Facilitator verification and settlement complete'],
-      [12600, 'Premium payload returned']
-    ];
-    const timers = timeline.map(([delay, label]) => setTimeout(() => {
-      setSteps((existing) => [...existing, label]);
-    }, delay));
-    onRun();
-    return () => timers.forEach(clearTimeout);
-  }, [open, onRun]);
-
-  if (!open) return null;
-
-  return (
-    <div className="modal-backdrop">
-      <div className="modal">
-        <header className="modal-header">
-          <div className="modal-title"><Terminal size={18} /> x402 Agent Run</div>
-          <button className="icon-button" title="Close" onClick={onClose}><X size={18} /></button>
-        </header>
-        <div className="terminal">
-          {steps.map((step) => (
-            <div className="terminal-line" key={step}><span>$</span>{step}</div>
-          ))}
-          <div className="terminal-line muted"><span>$</span><span className="cursor">processing</span></div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 export default function App() {
   const [records, setRecords] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [modalOpen, setModalOpen] = useState(false);
   const [payingId, setPayingId] = useState('');
 
   const loadOrders = async () => {
@@ -198,15 +153,8 @@ export default function App() {
     loadOrders();
   };
 
-  const runX402Agent = async () => {
-    await fetch(`${API_BASE}/api/demo/run-x402-agent`, { method: 'POST' }).catch(() => {});
-    setTimeout(loadOrders, 14000);
-  };
-
   return (
     <main className="app-shell">
-      <AgentModal open={modalOpen} onClose={() => setModalOpen(false)} onRun={runX402Agent} />
-
       <aside className="sidebar">
         <div className="brand">
           <div className="brand-mark">T</div>
@@ -230,7 +178,6 @@ export default function App() {
           <div className="actions">
             <button className="button secondary" onClick={loadOrders} disabled={loading}><RefreshCw size={18} /> Refresh</button>
             <button className="button secondary" onClick={createCheckout}><CreditCard size={18} /> New ACP Session</button>
-            <button className="button primary" onClick={() => setModalOpen(true)}><Play size={18} /> Run x402 Agent</button>
           </div>
         </header>
 
